@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact-Madam's Boutique</title>
+<meta name="description" content="Contact Madam Boutique — we’re here to help with orders, products, and more.">
+<meta property="og:title" content="Contact • Madam Boutique">
+<meta property="og:description" content="We’re here to help with products, orders, and support.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png">
+<link rel="canonical" href="./contact.html">
+<link rel="icon" type="logo" href="./title logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>
+  <style>
+     :root {
+    --primary-pink: #e91e63;
+    --primary-purple: #9c27b0;
+    --light-pink: #fce4ec;
+    --light-purple: #f3e5f5;
+    --dark-purple: #4a148c;
+    --gradient: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    --text-dark: #2c2c2c;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+    --transition: all 0.3s ease;
+  }
+    .section {
+      padding: 60px 80px;
+    }
+
+    .info {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .info h2 {
+      color: #ffffff;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      color: #6A0572;
+      margin-bottom: 25px;
+    }
+    form {
+      display: grid;
+      gap: 20px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #B565A7;
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #FF69B4;
+      box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+    }
+    textarea {
+      min-height: 120px;
+    }
+    button {
+      padding: 15px;
+      background: linear-gradient(90deg, #FF69B4, #B565A7);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(90deg, #B565A7, #6A0572);
+    }
+
+    .popup {
+  display: none;              /* hidden by default */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
+
+/* show + animation */
+.popup.show {
+  display: block;
+  animation: fadeInOut 4s forwards;
+}
+
+/* color variants */
+.popup.success { background: #6A0572; } /* purple */
+.popup.error   { background: #e94b4b; } /* red */
+
+/* fade/slide animation */
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-18px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  85%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-18px); }
+}
+
+    .map {
+      margin-top: 50px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+     /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+            padding: 120px 0 80px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .contact-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+  </style>
+</head>
+<body>
+
+  <div id="popup" class="popup" role="status" aria-live="polite"></div>
+
+
+<header>
+    <img style="width: 260px; height: 150px;" src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" loading="eager" decoding="sync" data-no-lazy>
+  <br>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Shop</a></li>
+      <li>
+        <a href="#">Brands</a>
+        <ul>
+          <li><a href="./gul-ahmed.html">Gul Ahmed</a></li>
+          <li><a href="./khaadi.html">Khaadi</a></li>
+          <li><a href="./almirah.html">Almirah</a></li>
+        </ul>
+      </li>
+      <li><a href="./gallery.html">Gallery</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </nav>
+</header>
+<br>
+  <main>
+ <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+        </div>
+    </section>
+
+  
+
+        <section class="contact-section reveal-on-scroll">
+            <div class="container">
+                <div class="contact-content">
+                    <div  class="contact-info">
+                        <h2 style="color: white;"><b>Get in Touch</b></h2>
+                        <p style="color: var(--text-dark);">Questions, sizing, or order support? Our team is ready to help you find the perfect fit.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Phone</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p>info@madamboutique.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Address</h4>
+                                    <p>123 Fashion Street<br>Style City, SC 12345</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 9:00 AM - 8:00 PM<br>
+                                    Saturday - Sunday: 10:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <h2 style="color: white;"><b>Send us a Message</b></h2>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="order">Order Support</option>
+                                    <option value="product">Product Information</option>
+                                    <option value="return">Return/Exchange</option>
+                                    <option value="complaint">Complaint</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Please describe your inquiry..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-map reveal-on-scroll">
+            <div class="container">
+                <h2 style="color: white;"><b>Visit Our Store</b></h2>
+                <div class="map-placeholder">
+                    <div class="map-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.6052252007985!2d67.11909987550219!3d24.91144404321537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb339001dff7823%3A0xd3f3cafb3dba1ea1!2sMadam&#39;s%20Boutique!5e0!3m2!1sen!2s!4v1758760584796!5m2!1sen!2s" width="1300px" height="400px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal-on-scroll">
+          <h2 class="section-title" style="text-align:center; color: white;"><b>Connect Instantly</b></h2><br>
+          <div class="support-grid">
+            <a style="background-color: white; color: var(--primary-pink);" class="support-card" href="tel:+9223456788" aria-label="Call us">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <div style="font-weight:800;">Call Us</div>
+                <div>+92 234 567 88</div>
+              </div>
+            </a>
+            <a style="background-color: white; color: var(--primary-pink);" class="support-card" href="mailto:madamboutique12@gmail.com" aria-label="Email us">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <div style="font-weight:800;">Email</div>
+                <div>madamboutique12@gmail.com</div>
+              </div>
+            </a>
+            <a style="color: var(--primary-pink); background-color: white;" class="support-card" href="https://wa.me/923000000000" target="_blank" rel="noopener" aria-label="WhatsApp us">
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <div style="font-weight:800;">WhatsApp</div>
+                <div>Chat with Support</div>
+              </div>
+            </a>
+          </div>
+        </section>
+<br>
+        <section class="contact-faq reveal-on-scroll">
+            <div class="container">
+                <h2 style="color: white;"><b>Frequently Asked Questions</b></h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4 style="color: var(--primary-pink);">What are your delivery times?</h4>
+                        <p>We typically deliver within 3-5 business days for standard shipping and 1-2 days for express delivery.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 style="color: var(--primary-pink);">Do you offer international shipping?</h4>
+                        <p>Currently, we ship within the United States. International shipping options are coming soon!</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 style="color: var(--primary-pink);">What is your return policy?</h4>
+                        <p>We offer a 30-day return policy for unworn items in original condition with tags attached.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4 style="color: var(--primary-pink);">How can I track my order?</h4>
+                        <p>Once your order ships, you'll receive a tracking number via email to monitor your package.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<section class="section reveal-on-scroll faq">
+  <h2 class="section-title" style="text-align:center; color: white;">Support FAQ</h2><br>
+  <details>
+    <summary style="color: var(--primary-pink);">How soon will you respond?</summary>
+    <p>We typically respond within 2 hours during business days, and within 24 hours otherwise.</p>
+  </details>
+  <details>
+    <summary style="color: var(--primary-pink);">Can I change my address after ordering?</summary>
+    <p>Yes, contact us within 2 hours of placing the order and we’ll update it if the package hasn’t shipped.</p>
+  </details>
+</section>
+
+
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color: white;">
+    <div class="me-5 d-none d-lg-block" style="color: white;">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Madam Boutique
+          </h6>
+        <img src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" width="200px">
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">About us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms and Conditions</a>
+          </p>
+          <p>
+            <a href="./contact.html" class="text-reset">Contact Us</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Brands
+          </h6>
+          <p>
+            <a href="./gul-ahmed.html" class="text-reset">Gul Ahmed</a>
+          </p>
+          <p>
+            <a href="./khaadi.html" class="text-reset">Khaadi</a>
+          </p>
+          <p>
+            <a href="./almirah.html" class="text-reset">Almirah</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+          My Account
+          </h6>
+          <p>
+            <a href="./signin.html" class="text-reset">Sign In</a>
+          </p>
+          <p>
+            <a href="./cart.html" class="text-reset">View Cart</a>
+          </p>
+        </div>
+        
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color: white;">
+        
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Karachi, North-Karachi, Pakistan</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            madamboutique12@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="text-center p-4" style="background-color: rgba(194, 186, 186, 0.05); color: white;">
+    © 2025 Copyright:Madam Boutique
+  </div>
+</footer>
+
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contact-form');
+  const popup = document.getElementById('popup');
+
+  if (!form) {
+    console.warn('contact-form element not found (id="contact-form")');
+    return;
+  }
+  if (!popup) {
+    console.warn('popup element not found (id="popup")');
+    return;
+  }
+
+  let hideTimer = null;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameEl = form.querySelector('#name');
+    const emailEl = form.querySelector('#email');
+    const subjectEl = form.querySelector('#subject');
+    const messageEl = form.querySelector('#message');
+
+    const name = nameEl ? nameEl.value.trim() : '';
+    const email = emailEl ? emailEl.value.trim() : '';
+    const subject = subjectEl ? subjectEl.value : '';
+    const message = messageEl ? messageEl.value.trim() : '';
+
+    // Basic validation
+    if (!name || !email || !subject || !message) {
+      showPopup('⚠️ Please fill in all required fields.', 'error');
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showPopup('⚠️ Please enter a valid email address.', 'error');
+      return;
+    }
+
+    // If you want to actually send the form, call your API here.
+    // For now we simulate a successful submission:
+    showPopup(`✅ Thank you, ${name}! Your message has been sent.`, 'success');
+
+    // reset form
+    form.reset();
+  });
+
+  function showPopup(text, type = 'success') {
+    // text and type -> 'success' or 'error'
+    popup.textContent = text;
+    popup.classList.remove('success', 'error', 'show');
+    popup.classList.add(type);
+
+    // Force reflow to allow re-triggering animation
+    void popup.offsetWidth;
+
+    popup.classList.add('show');
+
+    // Clear previous timer
+    if (hideTimer) clearTimeout(hideTimer);
+
+    // Hide after animation duration (4s in keyframes)
+    hideTimer = setTimeout(() => {
+      popup.classList.remove('show');
+      // keep it removed from DOM display after small delay to allow CSS to finish
+      setTimeout(() => { popup.classList.remove('success', 'error'); }, 300);
+    }, 4000);
+  }
+});
+</script>
+</body>
+</html>

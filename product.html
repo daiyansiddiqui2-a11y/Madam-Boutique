@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madam's Boutique</title>
+<link rel="icon" type="logo" href="./title logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.css" integrity="sha512-NhLySQDkiKSKnT+R795uaHWRQ7D3VuIvgeOLCK8cWq4w5fq4sWF90gj8eURpTqn/f1mFzqClpOz8JPlgVTLfFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+  :root {
+    --primary-pink: #e91e63;
+    --primary-purple: #9c27b0;
+    --secondary-pink: #ffb6c1;
+    --light-pink: #ffe4e1;
+    --dark-pink: #c71585;
+    --accent-pink: #ff1493;
+    --white: #ffffff;
+    --black: #2c2c2c;
+    --gray: #666666;
+    --light-gray: #f8f9fa;
+    --border-color: #e9ecef;
+    --shadow: 0 4px 20px rgba(255, 105, 180, 0.1);
+    --shadow-hover: 0 8px 30px rgba(255, 105, 180, 0.2);
+    --gradient-pink: linear-gradient(135deg, #ff69b4, #ff1493);
+    --gradient-light: linear-gradient(135deg, #ffe4e1, #ffb6c1);
+    --primary-purple: #6a0dad;
+    --text-color: #3a0a54;
+    /* Skeleton shimmer colors (light defaults) */
+    --skeleton-start: #f4e9fa;
+    --skeleton-mid: #ffffff;
+     --pink: #ff66cc;
+  --purple: #9933ff;
+  --dark: #222;
+  --light: #fff;
+  --gray: #777;
+  --bg: #fdf7ff;
+  --gradient: linear-gradient(90deg, var(--pink), var(--purple));
+  }
+</style>
+</head>
+<body>
+
+<header>
+    <img style="width: 260px; height: 150px;" src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" loading="eager" decoding="sync" data-no-lazy>
+  <br>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Shop</a></li>
+      <li>
+        <a href="#">Brands</a>
+        <ul>
+          <li><a href="./gul-ahmed.html">Gul Ahmed</a></li>
+          <li><a href="./khaadi.html">Khaadi</a></li>
+          <li><a href="./almirah.html">Almirah</a></li>
+        </ul>
+      </li>
+      <li><a href="./gallery.html">Gallery</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </nav>
+</header>
+<br>
+   <div class="product-container">
+    <!-- Product Image -->
+    <div class="product-image animate__animated animate__fadeInUp">
+      <img id="product-img" src="" alt="Product">
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info animate__animated animate__fadeInUp" style="animation-delay:.1s">
+      <div class="brand" id="product-brand"></div>
+      <div class="title" id="product-title"></div>
+      <div style="color: white;" class="stars" id="product-stars"></div>
+      <div class="price" id="product-price"></div>
+      <div class="description" id="product-desc"></div>
+      
+      <div class="options">
+        <label for="size">Choose Size:</label>
+        <select id="size">
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+          <option>XL</option>
+        </select>
+      </div>
+
+      <div class="options">
+        <label for="qty">Quantity:</label>
+        <input type="number" id="qty" min="1" value="1">
+      </div>
+
+      <button class="cart-btn" id="addToCartBtn">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- See similar -->
+  <section class="section-p1 reveal-on-scroll">
+    <h2 class="section-title" style="text-align:center; color: white;">See similar</h2>
+    <div class="product-grid stagger" id="similarGrid"></div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews-section reveal-on-scroll" id="reviews">
+    <div class="reviews-header">
+      <h2 style="color: var(--primary-pink); text-align: center;" class="section-title"><b>Customer Reviews</b></h2>
+      <div class="avg-rating" id="avgRating"><i class="fa-solid fa-star"></i> 0.0 <span class="rc-meta">(0)</span></div>
+    </div>
+    <form id="reviewForm" class="review-form" novalidate>
+      <div class="form-field full">
+        <label>Rating</label>
+        <div class="review-stars" role="radiogroup" aria-label="Rate this product" id="reviewStars">
+          <button type="button" class="rate-star" data-value="1" aria-label="1 star"><i class="fa-regular fa-star"></i></button>
+          <button type="button" class="rate-star" data-value="2" aria-label="2 stars"><i class="fa-regular fa-star"></i></button>
+          <button type="button" class="rate-star" data-value="3" aria-label="3 stars"><i class="fa-regular fa-star"></i></button>
+          <button type="button" class="rate-star" data-value="4" aria-label="4 stars"><i class="fa-regular fa-star"></i></button>
+          <button type="button" class="rate-star" data-value="5" aria-label="5 stars"><i class="fa-regular fa-star"></i></button>
+        </div>
+        <input type="hidden" id="reviewRating" name="rating" required>
+      </div>
+      <div class="form-field">
+        <label for="reviewName">Your name</label>
+        <input type="text" id="reviewName" name="name" placeholder="e.g. sonam" required>
+      </div>
+      <div class="form-field">
+        <label for="reviewTitle">Review title</label>
+        <input type="text" id="reviewTitle" name="title" placeholder="e.g. Beautiful fabric!" required>
+      </div>
+      <div class="form-field full">
+        <label for="reviewText">Your review</label>
+        <textarea id="reviewText" name="text" placeholder="Share details about quality, fit and delivery..." required></textarea>
+      </div>
+      <div class="form-actions full">
+        <button type="submit" class="submit-review">Submit review</button>
+      </div>
+    </form>
+    <div class="review-list" id="reviewList"></div>
+  </section>
+
+  <!-- Extra details -->
+  <section class="section-p1 reveal-on-scroll">
+    <div class="faq">
+      <details>
+        <summary style="color: var(--primary-pink);">Fabric & Care</summary>
+        <p>Premium fabric. Hand wash recommended. Do not bleach. Line dry in shade. Iron on low.</p>
+      </details>
+      <details>
+        <summary style="color: var(--primary-pink);">Shipping & Returns</summary>
+        <p>Pakistan-wide delivery in 3–5 working days. 7-day easy exchange on unused items with tags.</p>
+      </details>
+      <details>
+        <summary style="color: var(--primary-pink);">Size & Fit</summary>
+        <p>Model height 5'6", wearing size S. For relaxed fit, choose one size up.</p>
+      </details>
+    </div>
+  </section>
+
+  <script>
+    // Product Database (brand + PKR prices + existing images)
+    const products = {
+      1: {
+        title: "RUBY RADIANCE",
+        brand: "Gul Ahmed",
+        price: 30000,
+        desc: "This stunning three-piece suit showcases the timeless allure of self Gul Ahmed net fabric, radiating grace and elegance. The straight red shirt is lavishly embellished with kora dabka, pearls, and motifs for a regal charm.",
+        img: "./products/ruby-radiance-144889.webp"
+      },
+      2: {
+        title: "FLORAL DRESS",
+        brand: "Khaadi",
+        price: 20000,
+        desc: "Peach front-open maxi dress with intricate handwork detailing on shirt and sleeves for a sophisticated look.",
+        img: "./products/white-florence-111778.webp"
+      },
+      3: {
+        title: "BLACK ROYALTY",
+        brand: "Almirah",
+        price: 12000,
+        desc: "Statement black ensemble with unique cut and exquisite embellishments. Royal finish with worked hem.",
+        img: "../products/black-royalty-582566.webp"
+      },
+      4: {
+        title: "Ivory Buzz",
+        brand: "Khaadi",
+        price: 16000,
+        desc: "Ivory and peach dress with elegant handwork and lace details for sleeves and hem.",
+        img: "../products/ivory-buzz-802418.webp"
+      },
+      5: {
+        title: "White Sparkle",
+        brand: "Almirah",
+        price: 8000,
+        desc: "Off-white frock-style dress with embellished bodice and sleeves, highlighted with pearls and lace.",
+        img: "./products/white-sparkle-949256.webp"
+      },
+      6: {
+        title: "Elsa",
+        brand: "Khaadi",
+        price: 17000,
+        desc: "Crushed frock with coat-style gown, richly embroidered with intricate details.",
+        img: "./products/elsa-604378.webp"
+      },
+      7: {
+        title: "Koel",
+        brand: "Almirah",
+        price: 22999,
+        desc: "Refreshing ivory kameez with vibrant embroidery and craft detailing.",
+        img: "./products/koel-852324.webp"
+      },
+      8: {
+        title: "Abaya",
+        brand: "Gul Ahmed",
+        price: 12499,
+        desc: "Long white kameez with machine embroidery, handwork, and delicate embellishments.",
+        img: "./products/14453E57-CFAC-4D88-98E9-F6C392066878.webp"
+      },
+      9: {
+        title: "Abaya",
+        brand: "Gul Ahmed",
+        price: 12799,
+        desc: "Elegant floral design perfect for parties and casual wear.",
+        img: "./products/DSC_6068.webp"
+      },
+      11: {
+        title: "Regalia",
+        brand: "Almirah",
+        price: 13899,
+        desc: "Classic occasion-ready look with refined details.",
+        img: "./products/regalia-844017.webp"
+      },
+      12: {
+        title: "Kurta",
+        brand: "Khaadi",
+        price: 2590,
+        desc: "A solid kurta featuring full sleeves, a rounded hem and a V-neckline finished with a tassel.",
+        img: "./products/11.webp"
+      },
+      13: {
+        title: "Green Cotton Dobby 3Pc Stitched",
+        brand: "Almirah",
+        price: 10582,
+        desc: "Dobby Shirt With Contrasting Trims And *Handmade Tassel On Neckline And Daman",
+        img: "/products/13.webp"
+      },
+      14: {
+        title: "Mustard Dobby Yarn Dyed 3Pc Stitched",
+        brand: "Almirah",
+        price: 8032,
+        desc: "STRAIGHT CUT- SHORT LENGTH Dobby Shirt With Tassel And Dori Detail On Neckline Dyed Cambric Loose Ijaar Trousers Yarn Dyed Multicolor Dupatta With Tasseled",
+        img: "./products/14.webp"
+      },
+      15: {
+        title: "Red Cotton Dobby 3Pc Stitched",
+        brand: "Almirah",
+        price: 10599,
+        desc: "Dobby Shirt With Contrasting Trims And Metal Tassel On Neckline Cambric Loose Ijaar Hand Embroidered With Mirror-Detailed Self-Jacquard Dupatta",
+        img: "./products/15.webp"
+      },
+      16: {
+        title: "Yellow Paper Cotton 3Pc Stitched",
+        brand: "Almirah",
+        price: 10470,
+        desc: "Classic occasion-ready look with refined details.",
+        img: "./products/16.webp"
+      },
+      17: {
+        title: "Tailored 3 Piece",
+        brand: "Khaadi",
+        price: 2999,
+        desc: "Top Fabric: Dyed Jacquard | 90% Cotton | 10% Polyester Bottom Fabric: Dyed Cambric | 100% Cotton Dupatta Fabric: Digital Printed Jacquard | 90% Cotton | 10% Polyester Material: Jacquard",
+        img: "./products/17.webp"
+      },
+      18: {
+        title: "Tailored 3 Piece",
+        brand: "Khaadi",
+        price: 3599,
+        desc: "Tailored 3 PieceTop Fabric: Print Embroidered Cotton | 100% CottonBottom Fabric: Dyed Cambric | 100% Cotton Dupatta Fabric: Digital Printed Cationic Crinkle Chiffon | 100% Polyester Material: Cotton",
+        img: "./products/18.webp"
+      },
+      19: {
+        title: "Kurta",
+        brand: "Khaadi",
+        price: 3200,
+        desc: "A printed kurta with an ikat design, a rounded hem, full sleeves and a band collar with a V-cut.",
+        img: "./products/19.webp"
+      },
+      20: {
+        title: "Kurta",
+        brand: "Khaadi",
+        price: 3399,
+        desc: "A short solid kurta featuring full sleeves with embroidery, a round collar, and an embroidered neckline with buttons.",
+        img: "./products/20.webp"
+      },
+      21: {
+        title: "Cambric Printed Co-Ord Set With Embroidered",
+        brand: "Gul Ahmed",
+        price: 12000,
+        desc: "Stitched in lightweight cambric, this co-ord set brings everyday wear to life with a contemporary print highlighted by a finely detailed embroidery at the sleeves and hem. The regular fit ensures a graceful fall with unmatched comfort for long summer days.",
+        img: "./products/21.webp"
+      },
+      22: {
+        title: "Cambric Embroidered Shirt And Trouser",
+        brand: "Gul Ahmed",
+        price: 12000,
+        desc: "Classic occasion-ready look with refined details.",
+        img: "./products/22.webp"
+      },
+      23: {
+        title: "3 Piece Unstitched Embroidered Printed Lawn Suit",
+        brand: "Gul Ahmed",
+        price: 12000,
+        desc: "This outfit ensures traditional grace to your wardrobe with the detailed embroidery on the shirt and matching trousers. Tailored with a breathable fabric in a regular fit silhouette, makes it ideal for festive gatherings all summer long.",
+        img: "./products/23.webp"
+      },
+      24: {
+        title: "3 Piece Unstitched Printed Lawn Suit with Paper Cotton Dupatta",
+        brand: "Gul Ahmed",
+        price: 12000,
+        desc: "Classic occasion-ready look with refined details.",
+        img: "./products/24.webp"
+      },
+      25: {
+        title: "3 Piece Unstitched Printed Lawn Suit",
+        brand: "Gul Ahmed",
+        price: 12000,
+        desc: "Classic occasion-ready look with refined details.",
+        img: "./products/25.webp"
+      },
+    };
+
+    
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const product = products[id];
+
+    
+    if(product){
+      document.getElementById("product-title").innerText = product.title;
+      document.getElementById("product-brand").innerText = product.brand || '';
+      document.getElementById("product-price").innerText = "Rs. " + Number(product.price).toLocaleString();
+      document.getElementById("product-stars").innerText = product.stars;
+      document.getElementById("product-desc").innerText = product.desc;
+      document.getElementById("product-img").src = product.img;
+    }
+
+    
+    document.getElementById("addToCartBtn").addEventListener("click", () => {
+      const size = document.getElementById("size").value;
+      const qty = parseInt(document.getElementById("qty").value);
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cart.push({
+        id: id,
+        title: product.title,
+        price: product.price,
+        img: product.img,
+        size: size,
+        qty: qty
+      });
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      // notify header badge
+      try { document.dispatchEvent(new CustomEvent('cart:updated')); } catch(e){}
+      // inline toast
+      let toast = document.createElement('div');
+      toast.className = 'popup success';
+      toast.style.position = 'fixed'; toast.style.right = '18px'; toast.style.top = '110px'; toast.style.color = '#fff'; toast.style.padding = '10px 14px'; toast.style.borderRadius = '10px'; toast.style.zIndex = '3000';
+      toast.textContent = '✅ Added to cart!';
+      document.body.appendChild(toast);
+      setTimeout(()=>{ toast.remove(); }, 1800);
+      
+    });
+
+    // Render similar products (same brand)
+    function normalizeImg(src){
+      if(!src) return src;
+      return src.startsWith('../') ? './' + src.slice(3) : src;
+    }
+    function renderSimilar(){
+      const grid = document.getElementById('similarGrid');
+      if(!grid || !product) return;
+      const entries = Object.entries(products)
+        .filter(([pid,p]) => String(pid) !== id && p.brand === product.brand)
+        .slice(0, 4);
+      if(!entries.length){ grid.innerHTML = '<div style="text-align:center; color:#7b6d89;">No similar items found.</div>'; return; }
+      grid.innerHTML = entries.map(([pid,p])=>{
+        const imgSrc = normalizeImg(p.img);
+        const price = Number(p.price||0).toLocaleString();
+        return `
+        <div class="product-card" data-brand="${(p.brand||'').toLowerCase()}">
+          <a href="product.html?id=${pid}">
+            <img src="${imgSrc}" alt="${(p.title||'').replace(/"/g,'&quot;')}">
+            <div class="brand">${p.brand||''}</div>
+            <div class="product-title">${p.title||''}</div>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <div class="price">Rs. ${price}</div>
+          </a>
+        </div>`;
+      }).join('');
+    }
+    renderSimilar();
+  </script>
+
+  <script>
+    // Reviews logic for product page
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const pid = params.get('id') || 'unknown';
+      const storageKey = 'reviews';
+
+      function getStore(){ try { return JSON.parse(localStorage.getItem(storageKey)) || {}; } catch(e){ return {}; } }
+      function setStore(obj){ try { localStorage.setItem(storageKey, JSON.stringify(obj)); } catch(e){} }
+      function getReviews(){ const s = getStore(); return Array.isArray(s[pid]) ? s[pid] : []; }
+      function setReviews(list){ const s = getStore(); s[pid] = list; setStore(s); }
+
+      const avgEl = document.getElementById('avgRating');
+      const listEl = document.getElementById('reviewList');
+      const form = document.getElementById('reviewForm');
+      const starsWrap = document.getElementById('reviewStars');
+      const ratingInput = document.getElementById('reviewRating');
+
+      function starIcons(n){
+        let html = '';
+        for(let i=1;i<=5;i++){ html += `<i class="${i<=n?'fa-solid':'fa-regular'} fa-star"></i>`; }
+        return html;
+      }
+
+      function render(){
+        const list = getReviews();
+        // Average
+        let avg = 0; if(list.length){ avg = list.reduce((a,b)=> a + (Number(b.rating)||0), 0) / list.length; }
+        if(avgEl){ avgEl.innerHTML = `<i class=\"fa-solid fa-star\"></i> ${avg.toFixed(1)} <span class=\"rc-meta\">(${list.length})</span>`; }
+        // Items
+        if(listEl){
+          listEl.innerHTML = '';
+          if(!list.length){ listEl.innerHTML = '<div class="rc-meta">No reviews yet. Be the first to review.</div>'; return; }
+          list.slice().reverse().forEach(r => {
+            const card = document.createElement('article');
+            card.className = 'review-card';
+            const name = (r.name||'').replace(/</g,'&lt;');
+            const title = (r.title||'').replace(/</g,'&lt;');
+            const text = (r.text||'').replace(/</g,'&lt;');
+            const date = r.date ? new Date(r.date) : new Date();
+            card.innerHTML = `
+              <header>
+                <div class=\"rc-title\">${title || 'Review'}</div>
+                <div class=\"rc-actions\">
+                  <div class=\"rc-stars\">${starIcons(Number(r.rating)||0)}</div>
+                  <button type=\"button\" class=\"delete-review\" data-id=\"${String(r.date||'')}\" aria-label=\"Delete review\"><i class=\"fa-solid fa-trash\"></i></button>
+                </div>
+              </header>
+              <div class=\"rc-meta\">by ${name || 'Anonymous'} • ${date.toLocaleDateString()}</div>
+              <p>${text}</p>`;
+            listEl.appendChild(card);
+          });
+        }
+      }
+
+      // Stars selection
+      starsWrap?.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.rate-star');
+        if(!btn) return;
+        const val = Number(btn.dataset.value||0);
+        ratingInput.value = String(val);
+        starsWrap.querySelectorAll('.rate-star').forEach(b => {
+          const v = Number(b.dataset.value||0);
+          b.classList.toggle('selected', v <= val);
+          const i = b.querySelector('i');
+          if(i){ i.classList.toggle('fa-solid', v <= val); i.classList.toggle('fa-regular', v > val); }
+        });
+      });
+
+      // Submit form
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const rating = Number(ratingInput.value||0);
+        const name = (document.getElementById('reviewName').value||'').trim();
+        const title = (document.getElementById('reviewTitle').value||'').trim();
+        const text = (document.getElementById('reviewText').value||'').trim();
+        if(!rating || !name || !title || !text){
+          alert('Please complete rating, name, title and review.');
+          return;
+        }
+        const list = getReviews();
+        list.push({ rating, name, title, text, date: Date.now() });
+        setReviews(list);
+        form.reset(); ratingInput.value = '';
+        // clear stars UI
+        starsWrap.querySelectorAll('.rate-star').forEach(b=>{ b.classList.remove('selected'); const i=b.querySelector('i'); if(i){ i.classList.remove('fa-solid'); i.classList.add('fa-regular'); } });
+        render();
+        // small toast
+        const toast = document.createElement('div');
+        toast.className = 'popup success'; toast.style.position='fixed'; toast.style.right='18px'; toast.style.bottom='22px'; toast.style.color='#fff'; toast.style.padding='10px 14px'; toast.style.borderRadius='10px'; toast.style.zIndex='3000';
+        toast.textContent = '✅ Review submitted!'; document.body.appendChild(toast); setTimeout(()=> toast.remove(), 1800);
+      });
+
+      // Delete review (event delegation)
+      listEl?.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.delete-review');
+        if(!btn) return;
+        const id = btn.getAttribute('data-id') || '';
+        if(!id) return;
+        const next = getReviews().filter(r => String(r.date||'') !== id);
+        setReviews(next);
+        render();
+      });
+
+      // Initial render
+      render();
+    })();
+  </script>
+
+
+
+
+<section class="section-p1 reveal-on-scroll">
+    <h2 class="section-title" style="text-align:center; color: white;"><b>Explore more</b></h2>
+    <div class="product-grid">
+      <div class="product-card" data-brand="gul-ahmed" data-price="30000">
+        <a href="product.html?id=1">
+          <img src="./products/ruby-radiance-144889.webp" alt="Ruby Radiance">
+          <div class="brand">Gul Ahmed</div>
+          <div class="product-title">RUBY RADIANCE</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="price">Rs. 30,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="khaadi" data-price="20000">
+        <a href="product.html?id=2">
+          <img src="./products/white-florence-111778.webp" alt="Floral Dress">
+          <div class="brand">Khaadi</div>
+          <div class="product-title">Floral Dress</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 20,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="almirah" data-price="12000">
+        <a href="product.html?id=3">
+          <img src="./products/black-royalty-582566.webp" alt="Black Royalty">
+          <div class="brand">Almirah</div>
+          <div class="product-title">Black Royalty</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 12,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+        <a href="product.html?id=21">
+          <img src="./products/21.webp" alt="Cambric Printed Co-Ord Set With Embroidered">
+          <div class="brand">Gul Ahmed</div>
+          <div class="product-title">Cambric Printed Co-Ord Set</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 12,000</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color: white;">
+    <div class="me-5 d-none d-lg-block" style="color: white;">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+    
+      <div class="row mt-3">
+        
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Madam Boutique
+          </h6>
+        <img src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" width="200px">
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">About us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms and Conditions</a>
+          </p>
+          <p>
+            <a href="./contact.html" class="text-reset">Contact Us</a>
+          </p>
+        </div>
+        
+  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          
+          <h6 class="text-uppercase fw-bold mb-4">
+          My Account
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">Sign In</a>
+          </p>
+          <p>
+            <a href="./cart.html" class="text-reset">View Cart</a>
+          </p>
+        </div>
+        
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color: white;">
+        
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Karachi, North-Karachi, Pakistan</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            madamboutique12@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="text-center p-4" style="background-color: rgba(194, 186, 186, 0.05); color: white;">
+    © 2025 Copyright:Madam Boutique
+  </div>
+</footer>
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>

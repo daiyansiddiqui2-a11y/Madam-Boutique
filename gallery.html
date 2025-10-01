@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery-Madam Boutique</title>
+<meta name="description" content="Gallery — browse casual, formal, bridal, party and abaya looks from Madam Boutique.">
+<meta property="og:title" content="Gallery • Madam Boutique">
+<meta property="og:description" content="Browse curated looks across categories.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png">
+<link rel="canonical" href="./gallery.html">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madam's Boutique</title>
+<link rel="icon" type="logo" href="./title logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    
+    /* Additional gallery polish */
+    .chips { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom:18px; }
+    .chip { border:1px solid rgba(155,89,182,0.35); color:#6A0572; background:#fff; padding:8px 12px; border-radius:999px; font-weight:600; cursor:pointer; transition:all .2s; }
+    .chip:hover, .chip.active { background:#9b59b6; color:#fff; }
+    .gallery-item { transition: transform .3s ease, box-shadow .3s ease; }
+    .gallery-item:hover { transform: translateY(-6px) scale(1.02); box-shadow:0 14px 30px rgba(0,0,0,0.15); }
+  
+    .hero {
+      height: 200px;
+      background: url('gallery-banner.jpg') no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      background-blend-mode: multiply;
+      background-color: rgba(181, 101, 167, 0.6);
+    }
+    
+    .hero h1 {
+       font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(270deg, #ff4eb8, #a64dff, #ff4eb8);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+      font-size: 3rem;
+    }
+    @keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    .section {
+      padding: 60px 80px;
+      text-align: center;
+    }
+
+    /* Filter Buttons */
+    .filters {
+      margin-bottom: 40px;
+    }
+    .filters button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      background: #B565A7;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .filters button:hover, .filters button.active {
+      background: #6A0572;
+    }
+
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 15px;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(106, 5, 114, 0.8);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      transform: translateY(100%);
+      transition: 0.4s;
+    }
+    .gallery-item:hover .overlay {
+      transform: translateY(0);
+    }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .lightbox span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+      .style-guide {
+            padding: 80px 0;
+        }
+
+        .style-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tip-icon {
+            font-size: 3rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+
+        .tip-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .tip-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+ 
+         .gallery-header {
+            background: var(--gradient);
+            padding: 120px 0 60px;
+            text-align: center;
+            color: var(--white);
+        }
+  
+   :root {
+    --primary-pink: #e91e63;
+    --primary-purple: #9c27b0;
+    --light-pink: #fce4ec;
+    --light-purple: #f3e5f5;
+    --dark-purple: #4a148c;
+    --gradient: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    --text-dark: #2c2c2c;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+    --transition: all 0.3s ease;
+}
+
+
+    footer {
+      background: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+   
+  .gallery-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .gallery-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        collections-showcase {
+            padding: 80px 0;
+            background: var(--light-pink);
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .collection-image {
+            position: relative;
+            height: 400px;
+            background: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .collection-image i {
+            font-size: 6rem;
+            color: var(--primary-purple);
+            opacity: 0.7;
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .collection-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .collection-overlay p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .collection-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-pink);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .collection-btn:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+        }
+
+        .style-guide {
+            padding: 80px 0;
+        }
+
+        .style-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+    
+
+  </style>
+</head>
+<body>
+
+<header>
+    <img style="width: 260px; height: 150px;" src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" loading="eager" decoding="sync" data-no-lazy>
+  <br>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Shop</a></li>
+      <li>
+        <a href="#">Brands</a>
+        <ul>
+          <li><a href="./gul-ahmed.html">Gul Ahmed</a></li>
+          <li><a href="./khaadi.html">Khaadi</a></li>
+          <li><a href="./almirah.html">Almirah</a></li>
+        </ul>
+      </li>
+      <li><a href="./gallery.html">Gallery</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </nav>
+</header>
+<br>
+   <section class="gallery-header">
+        <div class="container">
+            <h1>Fashion Gallery</h1>
+            <p>Browse our curated gallery across Casual, Formal, Bridal, Party and Abaya designs. Use the category buttons or quick tags to explore your style. Click any image for a full preview.</p>
+        </div>
+    </section>
+
+
+
+  <section class="section reveal-on-scroll">
+    <div class="chips">
+      <button class="chip" onclick="filterGallery(this,'all')">All</button>
+      <button class="chip" onclick="filterGallery(this,'casual')">Casual</button>
+      <button class="chip" onclick="filterGallery(this,'formal')">Formal</button>
+      <button class="chip" onclick="filterGallery(this,'bridal')">Bridal</button>
+      <button class="chip" onclick="filterGallery(this,'party')">Party</button>
+      <button class="chip" onclick="filterGallery(this,'abaya')">Abaya</button>
+    </div>
+  </section>
+
+
+<div class="gallery stagger" id="gallery">
+      <div class="gallery-item casual">
+        <img src="./Gallery/casual.jpg" alt="Casual Dress">
+        <div class="overlay">Casual Wear</div>
+      </div>
+      <div class="gallery-item bridal">
+        <img src="./Gallery/bridal.webp" alt="Bridal Gown">
+        <div class="overlay">Bridal Collection</div>
+      </div>
+      <div class="gallery-item formal">
+        <img src="./Gallery/formal.webp" alt="Formal Outfit">
+        <div class="overlay">Formal Attire</div>
+      </div>
+      <div class="gallery-item party">
+        <img src="./Gallery/party.webp" alt="Party Dress">
+        <div class="overlay">Party Wear</div>
+      </div>
+      <div class="gallery-item bridal">
+        <img src="./Gallery/lehenga.jpg" alt="Bridal Lehenga">
+        <div class="overlay">Bridal Lehenga</div>
+      </div>
+      <div class="gallery-item casual">
+        <img src="./Gallery/summer.webp" alt="Summer Casual">
+        <div class="overlay">Summer Collection</div>
+      </div>
+      <div class="gallery-item formal">
+        <img src="./Gallery/attire.webp" alt="Business Attire">
+        <div class="overlay">Corporate Style</div>
+      </div>
+      <div class="gallery-item party">
+        <img src="./Gallery/party.jpg" alt="Party Outfit">
+        <div class="overlay">Evening Party</div>
+      </div>
+       <div class="gallery-item abaya">
+        <img src="./Gallery/classic.webp" alt="Classic Black Abaya">
+        <div class="overlay">Classic Black Abaya</div>
+      </div>
+      <div class="gallery-item abaya">
+        <img src="./Gallery/niqab style.jpg" alt="Niqab Style Abaya">
+        <div class="overlay">Niqab Style</div>
+      </div>
+      <div class="gallery-item abaya">
+        <img src="./Gallery/hijab and abaya.webp" alt="Hijab & Abaya Combo">
+        <div class="overlay">Hijab with Abaya</div>
+      </div>
+      <div class="gallery-item abaya">
+        <img src="./Gallery/modern turkish.webp" alt="Modern Turkish Abaya">
+        <div class="overlay">Turkish Abaya</div>
+      </div>
+      <div class="gallery-item abaya">
+        <img src="./Gallery/butterfly style.webp" alt="Butterfly Style Abaya">
+        <div class="overlay">Butterfly Style</div>
+      </div>
+      <div class="gallery-item abaya">
+        <img src="./Gallery/open front.webp" alt="Open Front Abaya">
+        <div class="overlay">Open Front Abaya</div>
+      </div>
+       <div class="gallery-item bridal abaya">
+        <img src="./Gallery/bridal abaya.jpg" alt="Bridal Abaya">
+        <div class="overlay">Bridal Abaya</div>
+      </div>
+      <div class="gallery-item bridal abaya">
+        <img src="./Gallery/bridal abaya 2.avif" alt="Bridal Abaya">
+        <div class="overlay">Bridal Abaya Without Niqab</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+      <button class="normal" id="loadMoreBtn">Load More</button>
+    </div>
+  </section>
+
+  
+  <div id="lightbox" class="lightbox">
+    <span onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
+
+  <!-- Collections Showcase -->
+    <section class="collections-showcase">
+        <div class="container">
+            <h2 style="color: white; text-align: center;"  class="section-title">Featured Collections</h2><br>
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <img src="./summer.webp" alt="" width="100%" height="500px">
+                        </div>
+                        <div class="collection-overlay">
+                            <h3>Summer Collection</h3>
+                            <p>Light and breezy designs perfect for the season</p>
+                            <a href="./products.html" class="collection-btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                           <img src="./ElegantFormalPakistaniDressinWhiteShade_1080x.jpg" alt="" width="100%" height="500px">
+                        </div>
+                        <div class="collection-overlay">
+                            <h3>Formal Elegance</h3>
+                            <p>Sophisticated designs for special occasions</p>
+                            <a href="./products.html" class="collection-btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collection-card">
+                    <div class="collection-image">
+                        <div class="image-placeholder">
+                            <img src="./traditional-heritage.jpg" alt="" width="100%" height="400px">
+                        </div>
+                        <div class="collection-overlay">
+                            <h3>Traditional Heritage</h3>
+                            <p>Timeless Pakistani traditional wear</p>
+                            <a href="./products.html" class="collection-btn">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+   <section class="style-guide">
+        <div class="container">
+            <h2 style="text-align: center; color: white;"class="section-title">Style Guide</h2><br>
+            <div class="style-tips">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color Coordination</h3>
+                    <p>Learn how to mix and match colors for the perfect Pakistani outfit combination.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <h3>Perfect Fit</h3>
+                    <p>Understanding different cuts and styles to find what works best for your body type.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Occasion Styling</h3>
+                    <p>Choose the right outfit for every occasion, from casual to formal events.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Fabric Care</h3>
+                    <p>Tips on maintaining the quality and longevity of your premium Pakistani garments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color: white;">
+    <div class="me-5 d-none d-lg-block" style="color: white;">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Madam Boutique
+          </h6>
+        <img src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" width="200px">
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">About us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms and Conditions</a>
+          </p>
+          <p>
+            <a href="./contact.html" class="text-reset">Contact Us</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Brands
+          </h6>
+          <p>
+            <a href="./gul-ahmed.html" class="text-reset">Gul Ahmed</a>
+          </p>
+          <p>
+            <a href="./khaadi.html" class="text-reset">Khaadi</a>
+          </p>
+          <p>
+            <a href="./almirah.html" class="text-reset">Almirah</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+          My Account
+          </h6>
+          <p>
+            <a href="./signin.html" class="text-reset">Sign In</a>
+          </p>
+          <p>
+            <a href="./cart.html" class="text-reset">View Cart</a>
+          </p>
+        </div>
+        
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color: white;">
+        
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Karachi, North-Karachi, Pakistan</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            madamboutique12@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="text-center p-4" style="background-color: rgba(194, 186, 186, 0.05); color: white;">
+    © 2025 Copyright:Madam Boutique
+  </div>
+</footer>
+
+
+  <script>
+
+    function filterGallery(btn, category) {
+      const items = document.querySelectorAll('.gallery-item');
+      const filterBtns = document.querySelectorAll('.filters button');
+      const chips = document.querySelectorAll('.chips .chip');
+
+      filterBtns.forEach(b => b.classList.remove('active'));
+      chips.forEach(c => c.classList.remove('active'));
+      if(btn) btn.classList.add('active');
+
+      items.forEach(item => {
+        const match = (category === 'all' || item.classList.contains(category));
+        item.style.display = match ? 'block' : 'none';
+      });
+    }
+
+    
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+  </script>
+  <script>
+    // Enhance chips active state and load more functionality
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const chips = document.querySelectorAll('.chips .chip');
+      chips.forEach(ch => ch.addEventListener('click', ()=>{
+        chips.forEach(c=> c.classList.remove('active'));
+        ch.classList.add('active');
+      }));
+
+      const btn = document.getElementById('loadMoreBtn');
+      const items = Array.from(document.querySelectorAll('#gallery .gallery-item'));
+      // Initially show first 8
+      items.forEach((it, i)=>{ if(i>7) it.style.display='none'; });
+      if(items.length <= 8 && btn) btn.style.display='none';
+      if(btn){
+        let expanded = false;
+        btn.addEventListener('click', ()=>{
+          expanded = !expanded;
+          items.forEach((it, i)=>{ if(i>7) it.style.display = expanded ? 'block' : 'none'; });
+          btn.textContent = expanded ? 'Show Less' : 'Load More';
+        });
+      }
+    });
+  </script>
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>
+</body>
+</html>

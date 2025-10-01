@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madam's Boutique</title>
+<meta name="description" content="Madam Boutique — curated women’s fashion from Gul Ahmed, Khaadi, Almirah and more. Premium designs, smooth shopping, fast delivery.">
+<meta property="og:title" content="Madam Boutique">
+<meta property="og:description" content="Curated women’s fashion from top brands. Shop premium designs with a smooth, fast experience.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png">
+<link rel="canonical" href="./index.html">
+<link rel="icon" type="logo" href="./title logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+  :root {
+    --primary-pink: #e91e63;
+    --primary-purple: #9c27b0;
+    --secondary-pink: #ffb6c1;
+    --light-pink: #ffe4e1;
+    --dark-pink: #c71585;
+    --accent-pink: #ff1493;
+    --white: #ffffff;
+    --black: #2c2c2c;
+    --gray: #666666;
+    --light-gray: #f8f9fa;
+    --border-color: #e9ecef;
+    --shadow: 0 4px 20px rgba(255, 105, 180, 0.1);
+    --shadow-hover: 0 8px 30px rgba(255, 105, 180, 0.2);
+    --gradient-pink: linear-gradient(135deg, #ff69b4, #ff1493);
+    --gradient-light: linear-gradient(135deg, #ffe4e1, #ffb6c1);
+    --primary-purple: #6a0dad;
+    --text-color: #3a0a54;
+    /* Skeleton shimmer colors (light defaults) */
+    --skeleton-start: #f4e9fa;
+    --skeleton-mid: #ffffff;
+     --pink: #ff66cc;
+  --purple: #9933ff;
+  --dark: #222;
+  --light: #fff;
+  --gray: #777;
+  --bg: #fdf7ff;
+  --gradient: linear-gradient(90deg, var(--pink), var(--purple));
+  }
+</style>
+</head>
+<body data-no-contact-fab>
+
+<header>
+    <img style="width: 260px; height: 150px;" src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" loading="eager" decoding="sync" data-no-lazy>
+  <br>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Shop</a></li>
+      <li>
+        <a href="#">Brands</a>
+        <ul>
+          <li><a href="./gul-ahmed.html">Gul Ahmed</a></li>
+          <li><a href="./khaadi.html">Khaadi</a></li>
+          <li><a href="./almirah.html">Almirah</a></li>
+        </ul>
+      </li>
+      <li><a href="./gallery.html">Gallery</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+</nav>
+<button id="themeToggle" class="theme-toggle-btn" aria-pressed="false" aria-label="Toggle theme">🌙</button>
+</header>
+<section id="page-header">
+  <p>Save more with coupons & upto 35% off!</p>
+</section>
+
+<!-- Filters Bar -->
+<section class="filters-bar container" aria-label="Product filters">
+  <div class="filters-group">
+    <div class="filter-item">
+      <label class="filter-label">Brands</label>
+      <div id="brandFilters" class="brand-filters" role="group" aria-label="Filter by brand">
+        <!-- Will be populated by products.js based on available products -->
+      </div>
+    </div>
+    <div class="filter-item">
+      <label for="minPrice" class="filter-label">Min Price (Rs)</label>
+      <input type="number" id="minPrice" class="filter-input" inputmode="numeric" placeholder="e.g. 3000" min="0">
+    </div>
+    <div class="filter-item">
+      <label for="maxPrice" class="filter-label">Max Price (Rs)</label>
+      <input type="number" id="maxPrice" class="filter-input" inputmode="numeric" placeholder="e.g. 30000" min="0">
+    </div>
+    <div class="filter-item">
+      <button id="clearFilters" class="btn btn-outline" type="button" aria-label="Clear all filters">Clear</button>
+    </div>
+  </div>
+  <div class="filters-meta">
+    <span id="resultCount">Showing all products</span>
+  </div>
+</section><br>
+
+<!-- Products Grid -->
+<section class="container" aria-label="Products">
+  <div class="product-grid" id="productsGrid">
+    <div class="product-card" data-brand="gul-ahmed" data-price="30000">
+      <a href="product.html?id=1">
+<img src="./products/ruby-radiance-144889.webp" alt="Ruby Radiance">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">RUBY RADIANCE</div>
+        <div class="stars">⭐⭐⭐⭐☆</div>
+        <div class="price">Rs. 30,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=2">
+        <img src="./products/white-florence-111778.webp" alt="Floral Dress">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Floral Dress</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 20,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=3">
+        <img src="./products/black-royalty-582566.webp" alt="Floral Dress Black Royalty">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Black Royalty</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=4">
+        <img src="./products/ivory-buzz-802418.webp" alt="Ivory Buzz">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Ivory Buzz</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 16,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=5">
+        <img src="./products/white-sparkle-949256.webp" alt="White Sparkle">
+        <div class="brand">Almirah</div>
+        <div class="product-title">White Sparkle</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 8,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=6">
+        <img src="./products/elsa-604378.webp" alt="Elsa">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Elsa</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 17,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=7">
+        <img src="./products/koel-852324.webp" alt="Koel">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Koel</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 22,999</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=8">
+        <img src="./products/14453E57-CFAC-4D88-98E9-F6C392066878.webp" alt="White Florence">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">Abaya</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,499</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=9">
+        <img src="./products/DSC_6068.webp" alt="Floral Dress">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">Abaya</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,799</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=11">
+        <img src="./products/regalia-844017.webp" alt="Regalia">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Regalia</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 13,899</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=12">
+        <img src="./products/11.webp" alt="Regalia">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Kurta</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 2,590</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=13">
+        <img src="./products/13.webp" alt="Regalia">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Green Cotton Dobby 3Pc Stitched</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 10,582</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=14">
+        <img src="./products/14.webp" alt="Regalia">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Mustard Dobby Yarn Dyed 3Pc Stitched</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 8,032</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=15">
+        <img src="./products/15.webp" alt="Regalia">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Red Cotton Dobby 3Pc Stitched</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 10,599</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="almirah" data-price="12000">
+      <a href="product.html?id=16">
+        <img src="./products/16.webp" alt="Regalia">
+        <div class="brand">Almirah</div>
+        <div class="product-title">Yellow Paper Cotton 3Pc Stitched</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 10,470</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=17">
+        <img src="./products/17.webp" alt="Regalia">
+        <div class="brand">Khaddi</div>
+        <div class="product-title">Tailored 3 Piece</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 2,999</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=18">
+        <img src="./products/18.webp" alt="Regalia">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Tailored 3 Piece</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 3,599</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=19">
+        <img src="./products/19.webp" alt="Regalia">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Kurta</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 3,200</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="khaadi" data-price="12000">
+      <a href="product.html?id=20">
+        <img src="./products/20.webp" alt="Regalia">
+        <div class="brand">Khaadi</div>
+        <div class="product-title">Kurta</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 3,399</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=21">
+        <img src="./products/21.webp" alt="Regalia">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">Cambric Printed Co-Ord Set With Embroidered</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=22">
+        <img src="./products/22.webp" alt="Regalia">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">Cambric Embroidered Shirt And Trouser</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=23">
+        <img src="./products/23.webp" alt="Regalia">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">3 Piece Unstitched Embroidered Printed Lawn Suit</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=24">
+        <img src="./products/24.webp" alt="Regalia">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">3 Piece Unstitched Printed Lawn Suit with Paper Cotton Dupatta</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+    <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+      <a href="product.html?id=25">
+        <img src="./products/25.webp" alt="Regalia">
+        <div class="brand">Gul Ahmed</div>
+        <div class="product-title">3 Piece Unstitched Printed Lawn Suit</div>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="price">Rs. 12,000</div>
+      </a>
+    </div>
+
+  </div>
+  <nav id="pagination" class="pagination" aria-label="Products pagination"></nav>
+</section>
+
+
+ 
+
+<section id="newsletter" class="section-p1 section-m1" >
+  <div class="newstext">
+    <h4>Sign Up For Newsletter</h4>
+    <p>Get E-mails updates about our latest shop and <span>special offers</span></p>
+  </div>
+  <div class="form">
+    <input type="text" placeholder="Your Email Address">
+    <button class="normal">Sign Up</button>
+  </div>
+</section>
+
+
+
+
+
+
+
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color: white;">
+    <div class="me-5 d-none d-lg-block" style="color: white;">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Madam Boutique
+          </h6>
+        <img src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" width="200px">
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">About us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms and Conditions</a>
+          </p>
+          <p>
+            <a href="./contact.html" class="text-reset">Contact Us</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+          My Account
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">Sign In</a>
+          </p>
+          <p>
+            <a href="./cart.html" class="text-reset">View Cart</a>
+          </p>
+        
+        </div>
+        
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color: white;">
+        
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Karachi, North-Karachi, Pakistan</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            madamboutique12@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <div class="text-center p-4" style="background-color: rgba(194, 186, 186, 0.05); color: white;">
+    © 2025 Copyright:Madam Boutique
+  </div>
+</footer>
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>
+<script src="./theme.js" defer></script>
+<script src="./products.js" defer></script>

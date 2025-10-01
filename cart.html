@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madam's Boutique</title>
+<meta name="description" content="Your cart — complete checkout securely at Madam Boutique.">
+<meta property="og:title" content="Cart • Madam Boutique">
+<meta property="og:description" content="Secure, smooth checkout experience.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png">
+<link rel="canonical" href="./cart.html">
+<link rel="icon" type="logo" href="./title logo.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/bootstrap.min.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+ <style>
+  :root {
+    --primary-pink: #e91e63;
+    --primary-purple: #9c27b0;
+    --light-pink: #fce4ec;
+    --light-purple: #f3e5f5;
+    --dark-purple: #4a148c;
+    --gradient: linear-gradient(135deg, var(--primary-pink), var(--primary-purple));
+    --text-dark: #2c2c2c;
+    --text-light: #666;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+    --transition: all 0.3s ease;
+}
+   /* Cart Page Styles */
+        .cart-header {
+            background: var(--gradient);
+            padding: 120px 0 60px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cart-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cart-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+    .cart-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+    .cart-item img {
+      width: 80px;
+      border-radius: 10px;
+    }
+    .cart-info {
+      flex: 1;
+      margin-left: 15px;
+    }
+    .cart-info h4 {
+      margin: 0 0 5px;
+      color: #8e44ad;
+    }
+    .cart-info p {
+      margin: 2px 0;
+      font-size: 14px;
+      color: #444;
+    }
+    .cart-total {
+      text-align: right;
+      font-size: 20px;
+      font-weight: bold;
+      color: #c71585;
+      margin-top: 20px;
+    }
+    .checkout-btn {
+      background: linear-gradient(135deg, #ff66cc, #9b59b6);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+      float: right;
+    }
+    .checkout-btn:hover {
+      background: linear-gradient(135deg, #ff4db8, #8e44ad);
+    }
+     .checkout-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #8e44ad;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #8e44ad;
+      margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .order-summary {
+      margin-top: 25px;
+      background: #f8f0ff;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .order-summary h3 {
+      margin-bottom: 10px;
+      color: #c71585;
+    }
+
+    .checkout-btn {
+      background: linear-gradient(135deg, #ff66cc, #9b59b6);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background 0.3s, transform 0.2s;
+      width: 100%;
+    }
+
+    .checkout-btn:hover {
+      background: linear-gradient(135deg, #ff4db8, #8e44ad);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .checkout-container {
+        padding: 15px;
+      }
+    }
+
+    /* Order items polished list */
+    .order-items { display: grid; gap: 12px; }
+    .order-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto auto auto;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .order-item img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; }
+    .oi-info { display: grid; gap: 4px; }
+    .oi-title { font-weight: 800; color: #5b2a86; line-height: 1.2; }
+    .oi-meta { color: #6d5b78; font-size: 13px; }
+    .oi-price { font-weight: 800; color: #6a0dad; }
+    .oi-qty { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #e0d6ec; border-radius: 10px; padding: 4px; }
+    .qty-btn { background: transparent; border: none; color: #6a0dad; width: 26px; height: 26px; border-radius: 8px; cursor: pointer; font-weight: 900; }
+    .qty-btn:hover { background: #f6f0fb; }
+    .qty-input { width: 48px; text-align: center; border: none; outline: none; font-weight: 700; color: #5b2a86; }
+    .oi-subtotal { font-weight: 900; color: #6a0dad; }
+    .remove-btn { border: 1px solid rgba(233, 75, 75, 0.25); background: #fff; color: #e94b4b; padding: 6px 10px; border-radius: 10px; cursor: pointer; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; }
+    .remove-btn:hover { background: rgba(233, 75, 75, 0.06); }
+    .remove-btn i { font-size: 14px; }
+
+    .empty-cart { text-align: center; padding: 16px; color: #5a4e66; }
+    .empty-cart .btn { margin-top: 8px; }
+
+    /* Subtle helper text under fields */
+    .field-help { color: #6d5b78; font-size: 12px; margin-top: 6px; }
+
+    @media (max-width: 720px){
+      .order-item { grid-template-columns: 64px 1fr auto; gap: 8px; }
+      .oi-qty { order: 3; }
+      .oi-subtotal { order: 2; }
+      .remove-btn { order: 4; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <img style="width: 260px; height: 150px;" src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" loading="eager" decoding="sync" data-no-lazy>
+  <br>
+  <nav aria-label="Primary Navigation">
+    <ul>
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./products.html">Shop</a></li>
+      <li>
+        <a href="#">Brands</a>
+        <ul>
+          <li><a href="./gul-ahmed.html">Gul Ahmed</a></li>
+          <li><a href="./khaadi.html">Khaadi</a></li>
+          <li><a href="./almirah.html">Almirah</a></li>
+        </ul>
+      </li>
+      <li><a href="./gallery.html">Gallery</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./contact.html">Contact</a></li>
+      <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+    </ul>
+  </nav>
+</header><br>
+ <!-- Cart Header -->
+    <section class="cart-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <p>Review your selected items</p>
+        </div>
+    </section>
+
+  <div class="steps reveal-on-scroll">
+    <div class="step active"><strong style="color: var(--primary-pink);">1</strong><span>Cart</span></div>
+    <div class="step active"><strong style="color: var(--primary-pink);">2</strong><span>Details</span></div>
+    <div class="step"><strong style="color: var(--primary-pink);">3</strong><span>Confirm</span></div>
+  </div>
+  <div class="checkout-container">
+    <h2 style="color: var(--primary-pink);"><b>Checkout</b></h2>
+
+    <form id="checkoutForm">
+      <div>
+        <label for="name">Full name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+        <div class="field-help">As it appears on your ID or doorbell.</div>
+      </div>
+
+      <div>
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" placeholder="+92 300 1234567" required>
+        <div class="field-help">We’ll use this to contact you about your delivery.</div>
+      </div>
+
+      <div>
+        <label for="address">Delivery address</label>
+        <textarea id="address" placeholder="Street, city, postal code" required></textarea>
+        <div class="field-help">Include house number, street, area, city, and postal code.</div>
+      </div>
+
+      <div>
+        <label for="payment">Payment method</label>
+        <select id="payment" required>
+          <option value="">Select a payment method</option>
+          <option value="cod">Cash on Delivery</option>
+          <option value="card">Credit/Debit Card</option>
+          <option value="bank">Bank Transfer</option>
+        </select>
+        <div class="field-help">Choose Cash on Delivery or pay online securely.</div>
+      </div>
+
+      <!-- Order summary -->
+      <div class="order-summary">
+        <h3><b>Order summary</b></h3>
+        <div id="orderItems"></div>
+        <div id="orderTotal"><strong>Total:</strong> Rs. 0</div>
+      </div>
+
+      <button type="submit" class="checkout-btn">Place order</button>
+    </form>
+  </div>
+
+  <section class="section-p1 reveal-on-scroll">
+    <h2 class="section-title" style="text-align:center; color: white;">Explore more</h2>
+    <div class="product-grid">
+      <div class="product-card" data-brand="gul-ahmed" data-price="30000">
+        <a href="product.html?id=1">
+          <img src="./products/ruby-radiance-144889.webp" alt="Ruby Radiance">
+          <div class="brand">Gul Ahmed</div>
+          <div class="product-title">RUBY RADIANCE</div>
+          <div class="stars">⭐⭐⭐⭐☆</div>
+          <div class="price">Rs. 30,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="khaadi" data-price="20000">
+        <a href="product.html?id=2">
+          <img src="./products/white-florence-111778.webp" alt="Floral Dress">
+          <div class="brand">Khaadi</div>
+          <div class="product-title">Floral Dress</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 20,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="almirah" data-price="12000">
+        <a href="product.html?id=3">
+          <img src="./products/black-royalty-582566.webp" alt="Black Royalty">
+          <div class="brand">Almirah</div>
+          <div class="product-title">Black Royalty</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 12,000</div>
+        </a>
+      </div>
+
+      <div class="product-card" data-brand="gul-ahmed" data-price="12000">
+        <a href="product.html?id=21">
+          <img src="./products/21.webp" alt="Cambric Printed Co-Ord Set With Embroidered">
+          <div class="brand">Gul Ahmed</div>
+          <div class="product-title">Cambric Printed Co-Ord Set</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="price">Rs. 12,000</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const orderItemsDiv = document.getElementById('orderItems');
+    const orderTotalDiv = document.getElementById('orderTotal');
+
+    function getCart(){
+      try { return JSON.parse(localStorage.getItem('cart')) || []; } catch(e){ return []; }
+    }
+    function setCart(next){
+      try { localStorage.setItem('cart', JSON.stringify(next)); } catch(e){}
+    }
+    function formatPKR(n){
+      try { return Number(n||0).toLocaleString(); } catch(e){ return String(n||0); }
+    }
+    function itemKey(item){
+      return (item && (item.id || item.title || item.img || '')) + '';
+    }
+
+    function renderCart(){
+      const cart = getCart();
+      if(!cart.length){
+        orderItemsDiv.className = 'order-items';
+        orderItemsDiv.innerHTML = `<div class=\"empty-cart\">Your cart is empty<br><a class=\"btn\" href=\"./products.html\">Continue shopping</a></div>`;
+        orderTotalDiv.innerHTML = `<strong>Total:</strong> Rs. 0`;
+        return;
+      }
+      orderItemsDiv.className = 'order-items';
+      orderItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item) => {
+        const subtotal = (Number(item.price)||0) * (Number(item.qty)||1);
+        total += subtotal;
+        const row = document.createElement('div');
+        row.className = 'order-item';
+        row.dataset.key = itemKey(item);
+        row.innerHTML = `
+          <img src="${item.img || ''}" alt="${(item.title||'').replace(/"/g,'&quot;')}">
+          <div class="oi-info">
+            <div class="oi-title">${item.title || ''}</div>
+            <div class="oi-meta">${item.size ? 'Size: ' + item.size : ''}</div>
+            <div class="oi-price">Rs. ${formatPKR(item.price)}</div>
+          </div>
+          <div class="oi-qty">
+            <button type="button" class="qty-btn minus" aria-label="Decrease quantity">−</button>
+            <input type="number" class="qty-input" min="1" value="${Number(item.qty)||1}">
+            <button type="button" class="qty-btn plus" aria-label="Increase quantity">+</button>
+          </div>
+          <div class="oi-subtotal">Rs. ${formatPKR(subtotal)}</div>
+          <button type="button" class="remove-btn" aria-label="Remove item"><i class="fa-solid fa-trash"></i> Remove</button>
+        `;
+        orderItemsDiv.appendChild(row);
+      });
+      orderTotalDiv.innerHTML = `<strong>Total:</strong> Rs. ${formatPKR(total)}`;
+    }
+
+    // Handlers for qty and remove
+    orderItemsDiv.addEventListener('click', (e)=>{
+      const row = e.target.closest('.order-item');
+      if(!row) return;
+      const key = row.dataset.key;
+      if(e.target.closest('.remove-btn')){
+        const next = getCart().filter(it => itemKey(it) !== key);
+        setCart(next);
+        try { document.dispatchEvent(new CustomEvent('cart:updated')); } catch(e){}
+        renderCart();
+        return;
+      }
+      if(e.target.closest('.qty-btn')){
+        const isPlus = e.target.closest('.qty-btn').classList.contains('plus');
+        const input = row.querySelector('.qty-input');
+        const cur = Math.max(1, Number(input.value||1));
+        input.value = isPlus ? cur + 1 : Math.max(1, cur - 1);
+        updateRowQty(row, Number(input.value||1));
+      }
+    });
+    orderItemsDiv.addEventListener('input', (e)=>{
+      if(!e.target.classList.contains('qty-input')) return;
+      const row = e.target.closest('.order-item');
+      const val = Math.max(1, Number(e.target.value||1));
+      e.target.value = val;
+      updateRowQty(row, val);
+    });
+
+    function updateRowQty(row, qty){
+      const key = row.dataset.key;
+      const cart = getCart();
+      const idx = cart.findIndex(it => itemKey(it) === key);
+      if(idx === -1) return;
+      cart[idx].qty = qty;
+      setCart(cart);
+      try { document.dispatchEvent(new CustomEvent('cart:updated')); } catch(e){}
+      // Update subtotal in row
+      const sub = (Number(cart[idx].price)||0) * (Number(cart[idx].qty)||1);
+      const subEl = row.querySelector('.oi-subtotal');
+      if(subEl) subEl.textContent = `Rs. ${formatPKR(sub)}`;
+      // Update total summary
+      let total = 0;
+      cart.forEach(it => { total += (Number(it.price)||0)*(Number(it.qty)||1); });
+      orderTotalDiv.innerHTML = `<strong>Total:</strong> Rs. ${formatPKR(total)}`;
+    }
+
+    // Initial render
+    renderCart();
+
+    // Checkout submission (unchanged, currency fixed)
+    document.getElementById('checkoutForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const payment = document.getElementById('payment').value;
+      if(!name || !phone || !address || !payment){
+        alert('Please complete all required fields.');
+        return;
+      }
+      // Clear cart after placing order
+      localStorage.removeItem('cart');
+      try { document.dispatchEvent(new CustomEvent('cart:updated')); } catch(e){}
+      alert(`Thank you, ${name}! Your order has been placed.`);
+      window.location.href = 'index.html';
+    });
+  </script>
+
+
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom" style="color: white;">
+    <div class="me-5 d-none d-lg-block" style="color: white;">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Madam Boutique
+          </h6>
+        <img src="./ChatGPT_Image_Sep_11__2025__07_08_16_AM-removebg-preview.png" alt="" width="200px">
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            About
+          </h6>
+          <p>
+            <a href="./about.html" class="text-reset">About us</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Privacy Policy</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Terms and Conditions</a>
+          </p>
+          <p>
+            <a href="./contact.html" class="text-reset">Contact Us</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Brands
+          </h6>
+          <p>
+            <a href="./gul-ahmed.html" class="text-reset">Gul Ahmed</a>
+          </p>
+          <p>
+            <a href="./khaadi.html" class="text-reset">Khaadi</a>
+          </p>
+          <p>
+            <a href="./almirah.html" class="text-reset">Almirah</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4" style="color: white;">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+          My Account
+          </h6>
+          <p>
+            <a href="./signin.html" class="text-reset">Sign In</a>
+          </p>
+          <p>
+            <a href="./cart.html" class="text-reset">View Cart</a>
+          </p>
+  </div>
+        
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="color: white;">
+        
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Karachi, North-Karachi, Pakistan</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            madamboutique12@gmail.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 92 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 92 234 567 89</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <div class="text-center p-4" style="background-color: rgba(194, 186, 186, 0.05); color: white;">
+    © 2025 Copyright:Madam Boutique
+  </div>
+</footer>
+<script src="./scroll.js" defer></script>
+<script src="./lazy-images.js" defer></script>
